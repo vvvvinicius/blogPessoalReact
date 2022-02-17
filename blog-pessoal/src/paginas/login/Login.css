@@ -1,0 +1,21 @@
+
+.textosLogin{
+font-weight: bold !important;
+}
+
+.imagem{
+background-image: url(imgLogin.png);
+background-repeat: no-repeat;
+width: 100vh;
+min-height: 82vh;
+background-size: cover;
+background-position: center;
+}
+
+.text-decorator-none{
+    text-decoration: none;
+}
+
+.botao{
+background-color: #000000;
+}

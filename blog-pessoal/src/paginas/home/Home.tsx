@@ -5,22 +5,22 @@ import './Home.css';
 function Home(){
     return(
     <>
-    <Grid container direction="row" justifyContent="center" alignItems="center" style={{ backgroundColor: "white"}}>
+    <Grid container direction="row" justifyContent="center" alignItems="center" className="caixa">
                 <Grid alignItems="center" item xs={6}>
                     <Box paddingX={20} >
-                        <Typography variant="h3" gutterBottom color="textPrimary" component="h3" align="center" style={{ color: "black", fontWeight: "bold" }}>Bem-vinde ao meu blog!</Typography>
-                        <Typography variant="h5" gutterBottom color="textPrimary" component="h5" align="center" style={{ color: "black", fontWeight: "bold" }}>Acompanhe o meu aprendizado na Generation Brasil.</Typography>
+                        <Typography variant="h3" gutterBottom color="textPrimary" component="h3" align="center" className="titulo">Bem-vinde ao meu blog!</Typography>
+                        <Typography variant="h5" gutterBottom color="textPrimary" component="h5" align="center" className="titulo">Acompanhe o meu aprendizado na Generation Brasil.</Typography>
                     </Box>
                     <Box display="flex" justifyContent="center">
                         <Box marginRight={1}>
                         </Box>
-                        <Button variant="outlined" style={{ borderColor: "black", backgroundColor: "black", color: "white" }}>Ver Postagens</Button>
+                        <Button variant="outlined" className="botao">Ver Postagens</Button>
                     </Box>
                 </Grid>
                 <Grid item xs={6} >
-                    <img src="https://blush.design/api/download?shareUri=21PBz6JrB&w=800&h=800&fm=png" alt="" width="500px" height="500px" />
+                    <img src="./img/imgHome.png" alt="" width="700px" height="700px" />
                 </Grid>
-                <Grid xs={12} style={{ backgroundColor: "white" }}>
+                <Grid xs={12} className="postagens">
                 </Grid>
 
             </Grid>

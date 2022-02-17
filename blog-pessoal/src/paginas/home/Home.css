@@ -1,10 +1,18 @@
-.titulo{
-    color: rgb(0, 0, 0);
-    text-align: center;
+.caixa{
+    background-color: #ffffff;
 }
 
-.img{
-    width: 500px;
-    display: block;
-    margin: 0 auto;
+.titulo{
+    color: #000000 !important;
+    font-weight: bold;
+}
+
+.botao{
+    border-color: #000000;
+    background-color: #000000 !important;
+    color: #ffffff !important;
+}
+
+.postagens{
+    background-color: #ffffff;
 }
