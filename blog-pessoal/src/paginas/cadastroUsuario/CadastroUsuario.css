@@ -1,0 +1,16 @@
+.imagem2{
+    background-image: url(../../../public/img/imgLogin.png);
+background-repeat: no-repeat;
+width: 100vh;
+min-height: 82vh;
+background-size: cover;
+background-position: center;
+}
+
+.textosCadastro{
+    font-weight: bold !important;
+}
+
+.btnCancelar{
+    margin-right: 20px !important;
+}
