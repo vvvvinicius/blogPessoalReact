@@ -16,3 +16,12 @@
 .postagens{
     background-color: #ffffff;
 }
+
+.imagem{
+    background-image: url(../../../public/img/imgLogin.png);
+    background-repeat: no-repeat;
+    width: 100vh;
+    min-height: 82vh;
+    background-size: cover;
+    background-position: center;
+    }
