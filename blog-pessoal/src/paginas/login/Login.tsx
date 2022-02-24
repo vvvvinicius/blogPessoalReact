@@ -5,7 +5,6 @@ import useLocalStorage from "react-use-localstorage";
 import {login} from "../../../src/services/Service";
 import "./Login.css";
 import UserLogin from "../../models/UserLogin";
-import { tokenToString } from "typescript";
 
 function Login(){
     let history = useHistory();

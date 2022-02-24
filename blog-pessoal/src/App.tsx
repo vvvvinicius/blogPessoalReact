@@ -4,10 +4,14 @@ import Navbar from "./components/estaticos/navbar/Navbar";
 import Footer from "./components/estaticos/footer/Footer";
 import Home from "./paginas/home/Home";
 import Login from "./paginas/login/Login";
-import './App.css';
 import CadastroUsuario from "./paginas/cadastroUsuario/CadastroUsuario";
 import ListaTema from "./components/temas/listatema/ListaTema";
 import ListaPostagem from "./components/postagens/listapostagem/ListaPostagem";
+import DeletarTema from './components/temas/deletarTema/DeletarTema';
+import DeletarPostagem from './components/postagens/deletarPostagem/DeletarPostagem';
+import CadastroTema from './components/temas/cadastroTema/CadastroTema';
+import CadastroPost from './components/postagens/cadastroPost/CadastroPost';
+import './App.css';
 
 function App() {
   return (
@@ -38,8 +42,35 @@ function App() {
               <Route path="/posts">
                 <ListaPostagem />
               </Route>
-            </div>
-          </Switch>
+
+              <Route exact path='/formularioPostagem'>
+              <CadastroPost />
+              </Route>
+
+              <Route exact path='/formularioPostagem/:id'>
+              <CadastroPost />
+              </Route>
+          
+              <Route exact path='/formularioTema'>
+              <CadastroTema />
+              </Route>
+
+              <Route exact path='/formularioTema/:id'>
+              <CadastroTema />
+              </Route>
+
+              <Route path='/deletarPostagem/:id'>
+              <DeletarPostagem />
+              </Route>
+
+              <Route path='/deletarTema/:id'>
+              <DeletarTema />
+              </Route>
+
+
+
+        </div>
+        </Switch>
         <Footer />
     </Router>
   );
