@@ -57,9 +57,9 @@ function ListaPostagem() {
               <CardActions>
                 <Box display="flex" justifyContent="center" mb={1.5}>
 
-                  <Link to={`/formularioPostagem/${post.id}`} className="text-decorator-none" >
+                  <Link to={`/formularioPostagem/${post.id}`} >
                     <Box mx={1}>
-                      <Button variant="contained" className="marginLeft" size='small' color="primary" >
+                      <Button variant="contained" className="botao" size='small' color="primary" >
                         atualizar
                       </Button>
                     </Box>

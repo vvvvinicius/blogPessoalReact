@@ -32,7 +32,7 @@ function Home(){
                         <Button variant="outlined" className="botao">Ver Postagens</Button>
                     </Box>
                 </Grid>
-                <Grid item xs={6} className="imagem">
+                <Grid item xs={6} className="imgHome">
                 </Grid>
                 <Grid xs={12} className="postagens">
                     <TabPostagem />

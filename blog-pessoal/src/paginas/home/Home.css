@@ -17,11 +17,11 @@
     background-color: #ffffff;
 }
 
-.imagem{
-    background-image: url(../../../public/img/imgLogin.png);
+.imgHome{
+    background-image: url(../../../public/img/imgHome.png);
     background-repeat: no-repeat;
     width: 100vh;
-    min-height: 82vh;
+    min-height: 100vh;
     background-size: cover;
     background-position: center;
     }

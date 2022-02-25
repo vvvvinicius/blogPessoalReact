@@ -4,10 +4,10 @@ font-weight: bold !important;
 }
 
 .imagem{
-background-image: url(../../../public/img/imgLogin.png);
+background-image: url(../../../public/img/imgLogin.gif);
 background-repeat: no-repeat;
 width: 100vh;
-min-height: 82vh;
+min-height: 100vh;
 background-size: cover;
 background-position: center;
 }

@@ -1,8 +1,8 @@
 .imagem2{
-    background-image: url(../../../public/img/imgLogin.png);
+    background-image: url(../../../public/img/imgCadastro.gif);
 background-repeat: no-repeat;
-width: 100vh;
-min-height: 82vh;
+width: 80vh;
+min-height: 100vh;
 background-size: cover;
 background-position: center;
 }
