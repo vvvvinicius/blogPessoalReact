@@ -4,17 +4,31 @@ import Postagem from '../../../models/Postagem';
 import { busca } from '../../../services/Service'
 import { Box, Card, CardActions, CardContent, Button, Typography } from '@material-ui/core';
 import './ListaPostagem.css';
-import useLocalStorage from 'react-use-localstorage';
 import { useHistory } from 'react-router-dom'
+import { useSelector } from 'react-redux';
+import { TokenState } from '../../../Store/tokens/tokensReducer';
+import { toast } from 'react-toastify';
 
 function ListaPostagem() {
   const [posts, setPosts] = useState<Postagem[]>([])
-  const [token, setToken] = useLocalStorage('token');
   let history = useHistory();
+
+  const token = useSelector<TokenState, TokenState["tokens"]>(
+    (state) => state.tokens
+  );
 
   useEffect(() => {
     if (token == "") {
-      alert("Para acessar, faça login.")
+      toast.error("Para acessar, faça login.",{
+        position: "top-right",
+                autoClose: 2000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: false,
+                draggable: false,
+                theme: "colored",
+                progress: undefined,
+    });
       history.push("/login")
 
     }
@@ -57,7 +71,7 @@ function ListaPostagem() {
               <CardActions>
                 <Box display="flex" justifyContent="center" mb={1.5}>
 
-                  <Link to={`/formularioPostagem/${post.id}`} >
+                  <Link to={`/formularioPostagem/${post.id}`} className="text-decorator-none">
                     <Box mx={1}>
                       <Button variant="contained" className="botao" size='small' color="primary" >
                         atualizar

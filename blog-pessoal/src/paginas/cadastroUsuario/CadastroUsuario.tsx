@@ -1,14 +1,15 @@
-import React , {useState, useEffect, ChangeEvent} from "react";
+import React, { useState, useEffect, ChangeEvent } from "react";
 import "./CadastroUsuario.css";
 import { Grid, Box, Typography, Button, TextField } from "@material-ui/core";
-import {Link, useHistory} from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import User from "../../models/User";
-import {cadastroUsuario} from "../../services/Service";
+import { cadastroUsuario } from "../../services/Service";
+import { toast } from "react-toastify";
 
 function CadastroUsuario() {
 
     let history = useHistory();
-    const [confirmarSenha,setConfirmarSenha] = useState<String>("")
+    const [confirmarSenha, setConfirmarSenha] = useState<String>("")
     const [user, setUser] = useState<User>(
         {
             id: 0,
@@ -28,12 +29,12 @@ function CadastroUsuario() {
     useEffect(() => {
         if (userResult.id !== 0) {
             history.push("/login")
-            console.log (userResult)
+            console.log(userResult)
         }
     }, [userResult])
 
 
-    function confirmarSenhaHandle(e: ChangeEvent<HTMLInputElement>){
+    function confirmarSenhaHandle(e: ChangeEvent<HTMLInputElement>) {
         setConfirmarSenha(e.target.value)
     }
 
@@ -48,11 +49,29 @@ function CadastroUsuario() {
     }
     async function onSubmit(e: ChangeEvent<HTMLFormElement>) {
         e.preventDefault()
-        if(confirmarSenha === user.senha && user.senha.length >=8){
-        cadastroUsuario(`/usuarios/cadastrar`, user, setUserResult)
-        alert('Usuario cadastrado com sucesso!')
-        }else{
-            alert("Dados inconsistentes. Favor verificar as informações de cadastro.")
+        if (confirmarSenha === user.senha && user.senha.length >= 8) {
+            cadastroUsuario(`/usuarios/cadastrar`, user, setUserResult)
+            toast.success("Usuário cadastrado com sucesso!", {
+                position: "top-right",
+                autoClose: 2000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: false,
+                draggable: false,
+                theme: "colored",
+                progress: undefined,
+            });
+        } else {
+            toast.error("Dados inconsistentes. Favor verificar as informações de cadastro.", {
+                position: "top-right",
+                autoClose: 2000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: false,
+                draggable: false,
+                theme: "colored",
+                progress: undefined,
+            });
         }
     }
 
@@ -63,11 +82,11 @@ function CadastroUsuario() {
                 <Box paddingX={10}>
                     <form onSubmit={onSubmit}>
                         <Typography variant="h3" gutterBottom color="textPrimary" component="h3" align="center" className="textosCadastro">Cadastrar</Typography>
-                        <TextField value={user.nome} onChange={(e: ChangeEvent<HTMLInputElement>) => updatedModel(e)} id="nome" label="nome" variant="outlined" name="nome" margin="normal" fullWidth required/>
-                        <TextField value={user.usuario} onChange={(e: ChangeEvent<HTMLInputElement>) => updatedModel(e)} id="usuario" label="usuário" variant="outlined" name="usuario" margin="normal" fullWidth required/> 
-                        <TextField value={user.senha} onChange={(e: ChangeEvent<HTMLInputElement>) => updatedModel(e)} id="senha" label="senha" variant="outlined" name="senha" margin="normal" type="password" fullWidth placeholder="Insira no mínimo 8 caracteres." required/>
-                        <TextField value={confirmarSenha} onChange={(e: ChangeEvent<HTMLInputElement>) => confirmarSenhaHandle(e)} id="confirmarSenha" label="confirmarSenha" variant="outlined" name="confirmarSenha" margin="normal" type="password" fullWidth placeholder="Repita a senha." required/>
-                        
+                        <TextField value={user.nome} onChange={(e: ChangeEvent<HTMLInputElement>) => updatedModel(e)} id="nome" label="nome" variant="outlined" name="nome" margin="normal" fullWidth required />
+                        <TextField value={user.usuario} onChange={(e: ChangeEvent<HTMLInputElement>) => updatedModel(e)} id="usuario" label="usuário" variant="outlined" name="usuario" margin="normal" fullWidth required />
+                        <TextField value={user.senha} onChange={(e: ChangeEvent<HTMLInputElement>) => updatedModel(e)} id="senha" label="senha" variant="outlined" name="senha" margin="normal" type="password" fullWidth placeholder="Insira no mínimo 8 caracteres." required />
+                        <TextField value={confirmarSenha} onChange={(e: ChangeEvent<HTMLInputElement>) => confirmarSenhaHandle(e)} id="confirmarSenha" label="confirmarSenha" variant="outlined" name="confirmarSenha" margin="normal" type="password" fullWidth placeholder="Repita a senha." required />
+
 
                         <Box marginTop={2} textAlign="center">
                             <Link to="/login" className="text-decorator-none">
@@ -76,8 +95,8 @@ function CadastroUsuario() {
                                 </Button>
                             </Link>
                             <Button type="submit" variant="contained" className="botao">
-                                    Cadastrar
-                                </Button>
+                                Cadastrar
+                            </Button>
                         </Box>
                     </form>
                 </Box>

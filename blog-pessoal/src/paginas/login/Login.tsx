@@ -1,41 +1,64 @@
 import React, { ChangeEvent, useState, useEffect } from "react";
-import {Grid, Box, Typography, TextField, Button} from "@material-ui/core";
-import {Link, useHistory} from "react-router-dom";
-import useLocalStorage from "react-use-localstorage";
-import {login} from "../../../src/services/Service";
+import { Grid, Box, Typography, TextField, Button } from "@material-ui/core";
+import { Link, useHistory } from "react-router-dom";
+import { login } from "../../../src/services/Service";
 import "./Login.css";
 import UserLogin from "../../models/UserLogin";
+import { useDispatch } from "react-redux";
+import { addToken } from "../../Store/tokens/actions";
+import { toast } from 'react-toastify';
 
-function Login(){
+function Login() {
     let history = useHistory();
-    const [token, setToken] = useLocalStorage("token");
-    const[userLogin, setUserLogin] = useState<UserLogin>({
+    const dispatch = useDispatch();
+
+    const [token, setToken] = useState("");
+    const [userLogin, setUserLogin] = useState<UserLogin>({
         id: 0,
         usuario: "",
         senha: "",
         token: ""
     })
 
-    function updateModel(e: ChangeEvent<HTMLInputElement>){
+    function updateModel(e: ChangeEvent<HTMLInputElement>) {
         setUserLogin({
             ...userLogin,
             [e.target.name]: e.target.value
         })
     }
-        useEffect(() => {
-            if(token != ""){
-                history.push ("/home")
-            }
-        }, [token])
+    useEffect(() => {
+        if (token != "") {
+            dispatch(addToken(token))
+            history.push("/home")
+        }
+    }, [token])
 
-    async function onSubmit(e: ChangeEvent<HTMLFormElement>){
+    async function onSubmit(e: ChangeEvent<HTMLFormElement>) {
         e.preventDefault();
-        try{
-           await login(`/usuarios/logar`, userLogin, setToken)
+        try {
+            await login(`/usuarios/logar`, userLogin, setToken)
 
-            alert("Usuário logado com sucesso!");
-        }catch(error){
-            alert(`Dados do usuário insconsistentes. Erro ao logar!`);
+            toast.success("Usuário logado com sucesso!", {
+                position: "top-right",
+                autoClose: 2000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: false,
+                draggable: false,
+                theme: "colored",
+                progress: undefined,
+            });
+        } catch (error) {
+            toast.error("Dados do usuário insconsistentes. Erro ao logar!", {
+                position: "top-right",
+                autoClose: 2000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: false,
+                draggable: false,
+                theme: "colored",
+                progress: undefined,
+            });
         }
     }
 
@@ -46,26 +69,26 @@ function Login(){
                     <form onSubmit={onSubmit}>
                         <Typography variant="h3" gutterBottom color="textPrimary" component="h3" align="center" className="textosLogin">Entrar</Typography>
                         <TextField
-                        value={userLogin.usuario}
-                        onChange={(e: ChangeEvent<HTMLInputElement>) => updateModel(e)}
-                        id="usuario"
-                        label="usuário"
-                        variant="outlined"
-                        name="usuario"
-                        margin="normal"
-                        fullWidth
+                            value={userLogin.usuario}
+                            onChange={(e: ChangeEvent<HTMLInputElement>) => updateModel(e)}
+                            id="usuario"
+                            label="usuário"
+                            variant="outlined"
+                            name="usuario"
+                            margin="normal"
+                            fullWidth
                         />
 
                         <TextField
-                        value={userLogin.senha}
-                        onChange={(e: ChangeEvent<HTMLInputElement>) => updateModel(e)}
-                        id="senha"
-                        label="senha"
-                        variant="outlined"
-                        name="senha"
-                        margin="normal"
-                        type="password"
-                        fullWidth
+                            value={userLogin.senha}
+                            onChange={(e: ChangeEvent<HTMLInputElement>) => updateModel(e)}
+                            id="senha"
+                            label="senha"
+                            variant="outlined"
+                            name="senha"
+                            margin="normal"
+                            type="password"
+                            fullWidth
                         />
 
                         <Box marginTop={2} textAlign="center">
@@ -79,9 +102,9 @@ function Login(){
                             <Typography variant="subtitle1" gutterBottom align="center">Não tem uma conta?</Typography>
                         </Box>
                         <Link to="/cadastrousuario">
-                        <Typography variant="subtitle1" gutterBottom align="center" className="textosLogin">Cadastre-se</Typography>
+                            <Typography variant="subtitle1" gutterBottom align="center" className="textosLogin">Cadastre-se</Typography>
                         </Link>
-                        </Box>
+                    </Box>
                 </Box>
             </Grid>
             <Grid xs={6} className="imagem">
