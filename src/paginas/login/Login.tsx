@@ -76,6 +76,7 @@ function Login() {
                             variant="outlined"
                             name="usuario"
                             margin="normal"
+                            placeholder="Insira o e-mail cadastrado."
                             fullWidth
                         />
 
@@ -83,11 +84,12 @@ function Login() {
                             value={userLogin.senha}
                             onChange={(e: ChangeEvent<HTMLInputElement>) => updateModel(e)}
                             id="senha"
-                            label="senha"
+                            label="Senha"
                             variant="outlined"
                             name="senha"
                             margin="normal"
                             type="password"
+                            placeholder="Insira a senha cadastrada"
                             fullWidth
                         />
 
