@@ -36,7 +36,7 @@ function Navbar() {
         <Toolbar variant="dense">
             <Box className="cursor">
                 <Typography variant="h4" color="inherit">
-                    BlogPessoal
+                    vvvvinicius
                 </Typography>
             </Box>
             <br></br>
